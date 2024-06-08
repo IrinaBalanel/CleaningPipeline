@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CleaningPipeline.Models.OwnerDto>
+@{
+    // GET: Owner/List
+    ViewBag.Title = "List Owners";
+}
+<div class="flex-container">
+    <div class="card blue-border">
+        <div class="card-title blue"><h2>Owners</h2></div>
+        <div class="card-items">
+            @foreach (var Owner in Model)
+            {
+                <div class="card-item">
+                    <a href="Show/@Owner.OwnerId">@Owner.OwnerName</a>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div class="btn-add">
+        <a class="btn-add-text" href="/Owner/New/">Add new owner</a>
+    </div>
+</div>

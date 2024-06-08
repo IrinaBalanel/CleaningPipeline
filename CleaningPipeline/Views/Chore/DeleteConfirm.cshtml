@@ -1,0 +1,21 @@
+﻿@model CleaningPipeline.Models.ChoreDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this chore?</h2>
+
+<h3>@Model.ChoreName</h3>
+<p><strong>Description:</strong> @Model.ChoreDescription</p>
+<p><strong>Frequency:</strong> @Model.ChoreFrequency</p>
+<p><strong>Responsible:</strong> @Model.OwnerName</p>
+
+<div class="flex">
+    <div><a class="btn-cancel" href="/Chore/List">Cancel</a></div>
+    <div>
+        <form method="post" action="/Chore/Delete/@Model.ChoreId">
+            <input class="btn-confirm-delete" type="submit" value="Confirm Delete" />
+        </form>
+    </div>
+</div>
+

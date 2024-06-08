@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CleaningPipeline.Models.RoomDto>
+@{
+    // GET: Room/List
+    ViewBag.Title = "List Rooms";
+}
+
+<div class="flex-container">
+    <div class="card blue-border">
+        <div class="card-title blue"><h2>Rooms</h2></div>
+        <div class="card-items">
+            @foreach (var room in Model)
+            {
+                <div class="card-item">
+                    <a href="Show/@room.RoomId">@room.RoomName</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="btn-add">
+        <a class="btn-add-text" href="/Room/New/">Add new room</a>
+    </div>
+</div>

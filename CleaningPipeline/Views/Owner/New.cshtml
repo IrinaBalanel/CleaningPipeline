@@ -1,0 +1,23 @@
+﻿
+@{
+    // GET: Owner/New
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Owner</h2>
+<form action="/Owner/Create" method="POST">
+    <div class="form-container">
+        <div id="ownername-input" class="input">
+            <label for="owner-name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="owner-name" name="OwnerName" placeholder="Enter name of person from household" required/>
+        </div>
+        <div id="avail-input" class="input">
+            <label for="avail">Availability:<span class="asterisk"> *</span></label>
+            <input type="text" id="avail" name="OwnerAvailability" placeholder="E.g. Friday evening" required/>
+        </div>
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Owner/List">Cancel</a>
+            <input class="btn-save" type="submit" value="Add New Owner" />
+        </div>
+    </div>
+</form>

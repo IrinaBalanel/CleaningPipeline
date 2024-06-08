@@ -1,0 +1,50 @@
+﻿@model CleaningPipeline.Models.ViewModels.UpdateChore
+@{
+    // GET: Chore/Edit/5
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Chore</h2>
+<form method="POST" action="/Chore/Update/@Model.SelectedChore.ChoreId">
+    <div class="form-container">
+        <input type="text" style="display:none;" name="ChoreId" value="@Model.SelectedChore.ChoreId" />
+        <div id="chorename-input" class="input">
+            <label for="name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="name" name="ChoreName" value="@Model.SelectedChore.ChoreName" placeholder="Enter name of chore" required/>
+        </div>
+        <div id="description-input" class="input">
+            <label for="description">Description:<span class="asterisk"> *</span></label>
+            <input type="text" id="description" name="ChoreDescription" value="@Model.SelectedChore.ChoreDescription" placeholder="Describe how to complete the chore" required/>
+        </div>
+        <div id="frequency-input" class="input">
+            <label for="frequency">Frequency:<span class="asterisk"> *</span></label>
+            <input type="text" id="frequency" name="ChoreDescription" value="@Model.SelectedChore.ChoreFrequency" placeholder="E.g. Daily, Weekly, etc." required/>
+            @*        <select name="ChoreFrequency">
+                @foreach (var frequency in Model.ChoreFrequency)
+                {
+                    string selected = "";
+
+                }
+                <option value="@Model.ChoreFrequency">@Model.ChoreFrequency</option>
+            </select>*@
+        </div>
+
+        <div id="owner-input" class="input">
+            <label for="owner">Owner:<span class="asterisk"> *</span></label>
+            @*        <input type="text" name="OwnerId" value="@Model.OwnerId" />*@
+            @*change related owner with ViewModels*@
+            <select id="owner" name="OwnerId">
+                @foreach (var owner in Model.OwnerOptions)
+                {
+                    <option value="@owner.OwnerId">@owner.OwnerName</option>
+
+                }
+            </select>
+        </div>
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Chore/Show/@Model.SelectedChore.ChoreId">Cancel</a>
+            <input class="btn-save" type="submit" value="Save" />
+        </div>
+    </div>
+</form>
+

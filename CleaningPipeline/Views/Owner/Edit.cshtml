@@ -1,0 +1,30 @@
+﻿@model CleaningPipeline.Models.OwnerDto
+@{
+    // GET: Owner/Edit/1
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Owner</h2>
+<form method="POST" action="/Owner/Update/@Model.OwnerId">
+    <div class="form-container">
+        <input type="text" style="display:none;" name="OwnerId" value="@Model.OwnerId" />
+        <div id="ownername-input" class="input">
+            <label for="owner-name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="owner-name" name="OwnerName" value="@Model.OwnerName" placeholder="Enter name of person from household" required />
+        </div>
+        <div id="avail-input" class="input">
+            <label for="avail">Availability:<span class="asterisk"> *</span></label>
+            <input type="text" id="avail" name="OwnerAvailability" value="@Model.OwnerAvailability" placeholder="E.g. Friday evening" required />
+        </div>
+@*        <div id="assigned-chores" class="input">
+            <label for="assigned">Assigned chores:</label>
+            <input type="checkbox" id="assigned" name="OwnerAvailability" value="@Model.OwnerAvailability" placeholder="E.g. Friday evening" required />
+        </div>*@
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Owner/Show/@Model.OwnerId">Cancel</a>
+            <input class="btn-save" type="submit" value="Save" />
+        </div>
+    </div>
+    
+
+</form>

@@ -1,0 +1,231 @@
+﻿/*body {
+}*/
+
+h2{
+    margin: 30px 0px;
+}
+
+h3{
+    font-size: 1.2em;
+}
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/*CARDS*/
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+/*    justify-items: center;*/
+    align-items: center;
+    margin: 50px auto;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #FFD699;
+    border-radius: 5px;
+    min-width: 30%;
+    margin: 20px auto;
+    
+}
+
+.card-title {
+    width: 100%;
+    /*    border: 2px solid #FFD699;*/
+    text-align: center;
+/*    padding: 10px 20px;*/
+    margin: 0;
+    background-color: #FFD699;
+}
+
+.blue {
+    background-color: #AAEBFF;
+}
+
+.blue-border {
+    border: 2px solid #AAEBFF;
+}
+
+.card-items {
+    padding: 20px 30px 30px 30px;
+}
+
+.card-item {
+    padding-top: 10px;
+}
+
+.btn-add {
+    margin: 20px auto;
+/*    min-width: 30%;*/
+/*    width: 100%;
+    display: flex;
+    justify-content: center;*/
+}
+
+.btn-add-text {
+    padding: 10px 20px;
+    background-color: #5EBB67;
+    color: black;
+/*    border: 1px solid black;*/
+    border-radius: 5px;
+    text-align: center;
+}
+
+a.btn-add-text:hover {
+    color: black;
+    background-color: #93E39B;
+}
+
+/*SHOW VIEW*/
+.btns-bar{
+    display:flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 20px 0 20px 0;
+}
+.btns-alter{
+    display: flex;
+    gap: 30px;
+}
+
+.btn-delete {
+    color: #FF9999;
+}
+
+.btn-update {
+    color: #5EBB67;
+}
+
+.btn-back {
+    color: #001AA2;
+}
+
+.test {
+    position: relative;
+}
+
+.styled-header-chore::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background-color: #FFD699;
+    left: -15px;
+    top: 8px;
+}
+
+.styled-header-owner::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background-color: #AAEBFF;
+    left: -15px;
+    top: 8px;
+}
+
+.styled-header-room::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background-color: #E5BBFF;
+    left: -15px;
+    top: 8px;
+}
+
+/*DELETE*/
+.flex {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.btn-confirm-delete {
+    background-color: #FF9999;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    width: 140px;
+    height: 50px;
+}
+
+.btn-confirm-delete:hover {
+    background-color: #FFAAAA;
+}
+
+/*EDIT*/
+
+.btn-save {
+    background-color: #5EBB67;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 540px;
+    height: 50px;
+}
+
+.btn-cancel:hover {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: #FF9999;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    width: 40%;
+}
+
+input[type=text], select {
+    display: inline;
+    font-size: 14px;
+    width: 280px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 2px solid #FFD699;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+label{
+    font-weight: 600;
+}
+
+.input {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.btn-flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    align-items: center;
+}
+
+.asterisk {
+    color: #FFAAAA;
+}
+
+.btn-unassign{
+    border: none;
+    color: red;
+}
+
+btn-assign {
+    background-color: #F2FFF3;
+    border: 2px solid #5EBB67;
+    border-radius: 5px;
+}

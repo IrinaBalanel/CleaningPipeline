@@ -1,0 +1,3 @@
+{
+	"ChoreName":"Test", "ChoreDescription":"Do that", "ChoreFrequency":"Weekly", "OwnerId":2
+}

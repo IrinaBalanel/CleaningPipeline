@@ -1,0 +1,19 @@
+﻿
+@{
+    // GET: Room/New
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Room</h2>
+<form action="/Room/Create" method="POST">
+    <div class="form-container">
+        <div id="roomname-input" class="input">
+            <label for="room-name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="room-name" name="RoomName" placeholder="Enter name of room in household" required />
+        </div>
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Room/List">Cancel</a>
+            <input class="btn-save" type="submit" value="Add New Room" />
+        </div>
+    </div>
+</form>

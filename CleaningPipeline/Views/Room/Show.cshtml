@@ -1,0 +1,24 @@
+﻿@model CleaningPipeline.Models.ViewModels.DetailsRoom
+@{
+    // GET: Room/Show/1
+    ViewBag.Title = "Show Room";
+}
+<div class="btns-bar">
+    <div><a class="btn-back" href="/Room/List">Go back to list</a></div>
+    <div class="btns-alter">
+        <a class="btn-delete" href="/Room/DeleteConfirm/@Model.SelectedRoom.RoomId">Delete</a>
+        <a class="btn-update" href="/Room/Edit/@Model.SelectedRoom.RoomId">Update</a>
+    </div>
+</div>
+<div class="test">
+    <h2 class="styled-header-room">Room: @Model.SelectedRoom.RoomName</h2>
+</div>
+<div>
+    <h3>Chores to be completed in @Model.SelectedRoom.RoomName:</h3>
+    <ul>
+        @foreach (var chore in Model.RelatedChores)
+        {
+            <li><a href="/Chore/Show/@chore.ChoreId">@chore.ChoreName</a></li>
+        }
+    </ul>
+</div>

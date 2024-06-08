@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CleaningPipeline.Models.ChoreDto>
+@{
+    // GET: Chore/List
+    ViewBag.Title = "List Chores";
+}
+<div class="flex-container">
+    <div class="card">
+        <div class="card-title"><h2>Chores</h2></div>
+        <div class="card-items">
+            @foreach (var Chore in Model)
+            {
+                <div class="card-item">
+                    <a href="Show/@Chore.ChoreId">@Chore.ChoreName</a>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="btn-add">
+        <a class="btn-add-text" href="/Chore/New/">Add new chore</a>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CleaningPipeline.Models.OwnerDto>
+@{
+    // GET: Chore/New
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Chore</h2>
+<form action="/Chore/Create" method="POST">
+    <div class="form-container">
+        <div id="chorename-input" class="input">
+            <label for="name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="name" name="ChoreName" placeholder="Enter name of chore" required/>
+        </div>
+        <div id="description-input" class="input">
+            <label for="description">Description:<span class="asterisk"> *</span></label>
+            <input type="text" id="description" name="ChoreDescription" placeholder="Describe how to complete the chore" required/>
+        </div>
+        <div id="frequency-input" class="input">
+            <label for="frequency">Frequency:<span class="asterisk"> *</span></label>
+            <input type="text" id="frequency" name="ChoreFrequency" placeholder="E.g. Daily, Weekly, etc." required/>
+@*            <select id="frequency" name="ChoreFrequency">
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Biweekly">Biweekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Quarterly">Quarterly</option>
+                <option value="Yearly">Yearly</option>
+            </select>*@
+        </div>
+        <div id="owner-input" class="input">
+            <label for="owner">Owners:<span class="asterisk"> *</span></label>
+            @*<input type="text" name="OwnerId" />*@
+            @*add related owner*@
+            <select id="owner" name="OwnerId">
+                @foreach (var owner in Model)
+                {
+                    <option value="@owner.OwnerId">@owner.OwnerName</option>
+
+                }
+            </select>
+        </div>
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Chore/List">Cancel</a>
+            <input class="btn-save" type="submit" value="Add New Chore" />
+        </div>
+    </div>
+</form>
+

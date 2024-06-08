@@ -1,0 +1,21 @@
+﻿@model CleaningPipeline.Models.RoomDto
+@{
+    // GET: Room/Edit/1
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Room</h2>
+<form action="/Room/Update/@Model.RoomId" method="POST">
+    <div class="form-container">
+        <input type="text" style="display:none;" name="RoomId" value="@Model.RoomId" />
+        <div id="roomname-input" class="input">
+            <label for="room-name">Name:<span class="asterisk"> *</span></label>
+            <input type="text" id="room-name" name="RoomName" value="@Model.RoomName" placeholder="Enter name of room in household" required />
+        </div>
+        <div class="btn-flex-container">
+            <a class="btn-cancel" href="/Room/Show/@Model.RoomId">Cancel</a>
+            <input class="btn-save" type="submit" value="Save" />
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,19 @@
+﻿@model CleaningPipeline.Models.OwnerDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<h2>Are you sure you want to delete this owner?</h2>
+
+<h3>@Model.OwnerName</h3>
+
+<p>Availability: @Model.OwnerAvailability</p>
+<div class="flex">
+    <div><a class="btn-cancel" href="/Owner/List">Cancel</a></div>
+    <div>
+        <form method="post" action="/Owner/Delete/@Model.OwnerId">
+            <input class="btn-confirm-delete" type="submit" value="Confirm Delete" />
+        </form>
+    </div>
+</div>
+
+

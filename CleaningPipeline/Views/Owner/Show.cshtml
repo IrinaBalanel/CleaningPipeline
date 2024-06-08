@@ -1,0 +1,28 @@
+﻿@model CleaningPipeline.Models.ViewModels.DetailsOwner
+    @{
+        // GET: Owner/Show/1
+        ViewBag.Title = "Show Owner";
+    }
+<div class="btns-bar">
+    <div><a class="btn-back" href="/Owner/List">Go back to list</a></div>
+    <div class="btns-alter">
+        <a class="btn-delete" href="/Owner/DeleteConfirm/@Model.SelectedOwner.OwnerId">Delete</a>
+        <a class="btn-update" href="/Owner/Edit/@Model.SelectedOwner.OwnerId">Update</a>
+    </div>
+</div>
+<div class="test">
+    <h2 class="styled-header-owner">Owner: @Model.SelectedOwner.OwnerName</h2>
+</div>
+<div>
+    <h3>Availability:</h3>
+    <p>@Model.SelectedOwner.OwnerAvailability</p>
+</div>
+<div>
+    <h3>Assigned Chores:</h3>
+    <ul>
+        @foreach (var chore in Model.RelatedChores)
+        {
+            <li><a href="/Chore/Show/@chore.ChoreId">@chore.ChoreName</a></li>
+        }
+    </ul>
+</div>

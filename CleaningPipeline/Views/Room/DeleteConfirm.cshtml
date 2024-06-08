@@ -1,0 +1,15 @@
+﻿@model CleaningPipeline.Models.RoomDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<h2>Are you sure you want to delete @Model.RoomName?</h2>
+
+<div class="flex">
+    <div><a class="btn-cancel" href="/Room/List">Cancel</a></div>
+    <div>
+        <form method="post" action="/Room/Delete/@Model.RoomId">
+            <input class="btn-confirm-delete" type="submit" value="Confirm Delete" />
+        </form>
+    </div>
+</div>
+
