@@ -93,7 +93,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Chore))]
         [HttpPost]
         [Route("api/ChoreData/AddChore")]
-
+        [Authorize]
         public IHttpActionResult AddChore(Chore chore)
         {
             if (!ModelState.IsValid)
@@ -121,7 +121,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Chore))]
         [HttpPost]
         [Route("api/ChoreData/DeleteChore/{id}")]
-
+        [Authorize]
         public IHttpActionResult DeleteChore(int id)
         {
             Chore chore = db.Chores.Find(id);
@@ -146,7 +146,7 @@ namespace CleaningPipeline.Controllers
         ///<example>
         ///POST: api/ChoreData/UpdateChore/8
         ///</example>
-
+        [Authorize]
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/ChoreData/UpdateChore/{id}")]
@@ -270,6 +270,7 @@ namespace CleaningPipeline.Controllers
         /// </example>
         [HttpPost]
         [Route("api/ChoreData/AssignChoreToRoom/{ChoreId}/{RoomId}")]
+        [Authorize]
         public IHttpActionResult AssignChoreToRoom(int ChoreId, int RoomId)
         {
             Chore SelectedChore = db.Chores.Include(c=>c.Rooms).Where(c=>c.ChoreId== ChoreId).FirstOrDefault();
@@ -300,6 +301,7 @@ namespace CleaningPipeline.Controllers
         [HttpPost]
         [Route("api/ChoreData/UnassignChoreFromRoom/{ChoreId}/{RoomId}")]
         [ResponseType(typeof(ChoreDto))]
+        [Authorize]
         public IHttpActionResult UnassignChoreFromRoom(int ChoreId, int RoomId)
         {
             Chore SelectedChore = db.Chores.Include(c => c.Rooms).Where(c => c.ChoreId == ChoreId).FirstOrDefault();

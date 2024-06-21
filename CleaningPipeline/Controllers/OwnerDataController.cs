@@ -29,6 +29,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(OwnerDto))]
         [HttpGet]
         [Route("api/OwnerData/ListOwners")]
+        
         public IHttpActionResult ListOwners()
         {
             List<Owner> Owners = db.Owners.ToList();

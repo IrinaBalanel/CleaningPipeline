@@ -186,7 +186,7 @@ a.btn-add-text:hover {
     width: 40%;
 }
 
-input[type=text], select {
+input[type=text], input[type=password], select {
     display: inline;
     font-size: 14px;
     width: 280px;
@@ -222,10 +222,14 @@ label{
 .btn-unassign{
     border: none;
     color: red;
+    background-color: none;
 }
 
-btn-assign {
-    background-color: #F2FFF3;
-    border: 2px solid #5EBB67;
+#btn-assign {
+    padding: 10px 20px;
+    background-color: #5EBB67;
+    color: black;
+    /*    border: 1px solid black;*/
     border-radius: 5px;
+    text-align: center;
 }

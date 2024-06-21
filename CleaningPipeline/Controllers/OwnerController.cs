@@ -15,12 +15,44 @@ namespace CleaningPipeline.Controllers
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
+
+        static OwnerController()
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
+        }
+
+        /// <summary>
+        /// Gets the authentication cookie sent to this controller
+        /// </summary>
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            //This is a bit dangerous because a previously authenticated cookie could be cached for
+            //a follow-up request from someone else. Reset cookies in HTTP client before grabbing a new one.
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+
+            //collect token
+            //pass along to the WebAPI
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
+
         // GET: Owner/List
         public ActionResult List()
         {
             //curl localhost:44395/api/ownerdata/listowners
 
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/listowners";
 
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -35,7 +67,7 @@ namespace CleaningPipeline.Controllers
         {
             //curl localhost:44395/api/ownerdata/findowner/{id}
             DetailsOwner ViewModel = new DetailsOwner();
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/findowner/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -60,6 +92,7 @@ namespace CleaningPipeline.Controllers
         }
 
         // GET: Owner/New
+        [Authorize]
         public ActionResult New()
         {
             return View();
@@ -67,10 +100,12 @@ namespace CleaningPipeline.Controllers
 
         // POST: Owner/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Owner owner)
         {
+            GetApplicationCookie();
             Debug.WriteLine("the json payload is :");
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/addowner";
 
 
@@ -94,11 +129,12 @@ namespace CleaningPipeline.Controllers
         }
 
         // GET: Owner/Edit/1
+        [Authorize]
         public ActionResult Edit(int id)
         {
 
             //curl localhost:44395/api/ownerdata/findowner/{id}
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/findowner/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -114,15 +150,17 @@ namespace CleaningPipeline.Controllers
 
         // POST: Owner/Update/1
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Owner owner)
         {
+            GetApplicationCookie();
             try
             {
                 //Debug.WriteLine("The new chore info is:");
                 //Debug.WriteLine(owner.OwnerName);
                 //Debug.WriteLine(owner.OwnerAvailability);
 
-                HttpClient client = new HttpClient();
+                //HttpClient client = new HttpClient();
                 string url = "https://localhost:44395/api/ownerdata/updateowner/" + id;
 
                 string jsonpayload = jss.Serialize(owner);
@@ -148,7 +186,7 @@ namespace CleaningPipeline.Controllers
         public ActionResult DeleteConfirm(int id)
         {
             //curl localhost:44395/api/ownerdata/findowner/{id}
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/findowner/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -161,10 +199,12 @@ namespace CleaningPipeline.Controllers
 
         // POST: Owner/Delete/{id}
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
+            GetApplicationCookie();
             //curl -d "" localhost:44395/api/ownerdata/deleteowner
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/deleteowner/" + id;
             
             HttpContent content = new StringContent("");

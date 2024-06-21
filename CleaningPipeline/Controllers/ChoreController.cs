@@ -17,13 +17,44 @@ namespace CleaningPipeline.Controllers
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
-        
+
+        static ChoreController()
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
+        }
+
+        /// <summary>
+        /// Gets the authentication cookie sent to this controller
+        /// </summary>
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            //This is a bit dangerous because a previously authenticated cookie could be cached for
+            //a follow-up request from someone else. Reset cookies in HTTP client before grabbing a new one.
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+
+            //collect token
+            //pass along to the WebAPI
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
+
         // GET: Chore/List
         public ActionResult List()
         {
             //curl localhost:44395/api/choredata/listchores
             
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/listchores";
             
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -38,7 +69,7 @@ namespace CleaningPipeline.Controllers
         {
             DetailsChore ViewModel = new DetailsChore();
             //curl localhost:44395/api/choredata/findchore/{id}
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/findchore/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -66,10 +97,11 @@ namespace CleaningPipeline.Controllers
 
         //POST: Chore/Assign/{ChoreId}/{RoomId}
         [HttpPost]
+        [Authorize]
         public ActionResult Assign(int ChoreId, int RoomId)
         {
-         
-            HttpClient client = new HttpClient();
+            GetApplicationCookie();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/assignchoretoroom/" + ChoreId + "/" + RoomId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
@@ -81,10 +113,11 @@ namespace CleaningPipeline.Controllers
 
         //GET: Chore/Unassign/{choreid}?RoomId={roomid}
         [HttpPost]
+        [Authorize]
         public ActionResult Unassign(int ChoreId, int RoomId)
         {
-
-            HttpClient client = new HttpClient();
+            GetApplicationCookie();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/unassignchorefromroom/" + ChoreId + "/" + RoomId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
@@ -104,10 +137,11 @@ namespace CleaningPipeline.Controllers
         }
 
         // GET: Chore/New
+        [Authorize]
         public ActionResult New()
         {
             //GET api/ownerdata/listowners
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/ownerdata/listowners";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<OwnerDto> OwnerOptions = response.Content.ReadAsAsync<IEnumerable<OwnerDto>>().Result;
@@ -117,10 +151,12 @@ namespace CleaningPipeline.Controllers
 
         // POST: Chore/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Chore chore)
         {
+            GetApplicationCookie();
             Debug.WriteLine("the json payload is :");
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             //curl -H "Content-Type:application/json" -d @chore.json localhost:44395/api/choredata/addchore
             string url = "https://localhost:44395/api/choredata/addchore";
 
@@ -145,11 +181,12 @@ namespace CleaningPipeline.Controllers
         }
 
         // GET: Chore/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateChore ViewModel = new UpdateChore();
             //curl localhost:44395/api/choredata/findchore/{id}
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/findchore/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -173,8 +210,10 @@ namespace CleaningPipeline.Controllers
 
         // POST: Chore/Update/5
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Chore chore)
         {
+            GetApplicationCookie();
             try
             {
                 Debug.WriteLine("The new chore info is:");
@@ -183,7 +222,7 @@ namespace CleaningPipeline.Controllers
                 Debug.WriteLine(chore.ChoreFrequency);
                 Debug.WriteLine(chore.OwnerId);
 
-                HttpClient client = new HttpClient();
+                //HttpClient client = new HttpClient();
                 string url = "https://localhost:44395/api/choredata/updatechore/" + id;
 
 
@@ -212,7 +251,7 @@ namespace CleaningPipeline.Controllers
         public ActionResult DeleteConfirm(int id)
         {
             //curl localhost:44395/api/choredata/findchore/{id}
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/findchore/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -225,12 +264,14 @@ namespace CleaningPipeline.Controllers
 
         // POST: Chore/Delete/{id}
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
-            
+            GetApplicationCookie();
+
             //curl -d "" localhost:44395/api/choredata/deletechore
-                
-            HttpClient client = new HttpClient();
+
+            //HttpClient client = new HttpClient();
             string url = "https://localhost:44395/api/choredata/deletechore/" + id;
             HttpContent content = new StringContent("");
             HttpResponseMessage response=client.PostAsync(url, content).Result;

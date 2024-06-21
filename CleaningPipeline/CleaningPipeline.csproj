@@ -228,6 +228,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-CleaningPipeline-20240529074746.mdf" />
+    <Content Include="App_Data\aspnet-CleaningPipeline-20240529074746_log.ldf">
+      <DependentUpon>aspnet-CleaningPipeline-20240529074746.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
