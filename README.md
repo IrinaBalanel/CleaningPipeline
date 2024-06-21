@@ -24,9 +24,9 @@ This ERD illustrates 1-to-Many and Many-to-Many relationships between entities:
 5. Check that the database is created using (View > SQL Server Object Explorer > MSSQLLocalDb > ..)
 
 ## Features
-The Cleaning Pipeline CMS is using ASP.NET, leveraging Entity Framework Code-First Migrations for efficient database management and LINQ for Create, Read, Update and Delete (CRUD) operations. This CMS also includes authentication and authorization features built based on the Individual User Accounts template in an MVC project, allowing secure user login and access control. The logged in user has the ability to perform Create, Update and Delete operations with all three entities. If the user is not authorized, then the interface allows only to Read information in the CMS.
+The Cleaning Pipeline CMS uses ASP.NET, leveraging Entity Framework Code-First Migrations for efficient database management and LINQ for Create, Read, Update and Delete (CRUD) operations. This CMS also includes authentication and authorization features built based on the Individual User Accounts template in an MVC project, allowing secure user login and access control. The logged-in user has the ability to perform Create, Update and Delete operations with all three entities. If the user is not authorized, then the interface allows only to Read information in the CMS.
 
 ## Storyboard
-Melissa, a mother and housewife, will act as the admin. She can easily update chore details and assign each task to a room and a specific family member, as well as update the information about each family member. As an admin, she also has a right to create and delete from the CMS. 
+Melissa, a mother and housewife, will act as the admin who has a registered account in the CMS. She can easily update chore details, assign each task to a room and a specific family member, and update the information about each family member. As an admin, she also has a right to create and delete from the CMS. 
 
-Melissa has a husband Jack, three children Ann, Mike and Lilly, and two parents, living all together in one house. Each family member will be able to see their assigned chores to ensure they contribute to the cleaning of the house.
+Melissa has a husband Jack, three children Ann, Mike and Lilly, and two parents living together in one house. Without accounts in the system, each family member will be able to see their assigned chores to ensure they contribute to the cleaning of the house.
