@@ -18,15 +18,7 @@
         </div>
         <div id="frequency-input" class="input">
             <label for="frequency">Frequency:<span class="asterisk"> *</span></label>
-            <input type="text" id="frequency" name="ChoreDescription" value="@Model.SelectedChore.ChoreFrequency" placeholder="E.g. Daily, Weekly, etc." required/>
-            @*        <select name="ChoreFrequency">
-                @foreach (var frequency in Model.ChoreFrequency)
-                {
-                    string selected = "";
-
-                }
-                <option value="@Model.ChoreFrequency">@Model.ChoreFrequency</option>
-            </select>*@
+            <input type="text" id="frequency" name="ChoreFrequency" value="@Model.SelectedChore.ChoreFrequency" placeholder="E.g. Daily, Weekly, etc." required/>
         </div>
 
         <div id="owner-input" class="input">

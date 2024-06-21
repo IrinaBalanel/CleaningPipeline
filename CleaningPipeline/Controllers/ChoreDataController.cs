@@ -146,10 +146,11 @@ namespace CleaningPipeline.Controllers
         ///<example>
         ///POST: api/ChoreData/UpdateChore/8
         ///</example>
-        [Authorize]
+        
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/ChoreData/UpdateChore/{id}")]
+        [Authorize]
         public IHttpActionResult UpdateChore(int id, Chore chore)
         {
             

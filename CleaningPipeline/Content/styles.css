@@ -47,12 +47,20 @@ a {
     background-color: #AAEBFF;
 }
 
+.violet {
+    background-color: #E5BBFF;
+}
+
 .blue-border {
     border: 2px solid #AAEBFF;
 }
 
+.violet-border {
+    border: 2px solid #E5BBFF;
+}
+
 .card-items {
-    padding: 20px 30px 30px 30px;
+    padding: 20px 0px 30px 0px;
 }
 
 .card-item {
@@ -219,17 +227,54 @@ label{
     color: #FFAAAA;
 }
 
-.btn-unassign{
-    border: none;
+#btn-unassign {
     color: red;
-    background-color: none;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: inline;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 2px solid #FFD699;
+    border-radius: 5px;
 }
 
 #btn-assign {
-    padding: 10px 20px;
-    background-color: #5EBB67;
+    width: 120px;
+    background-color: #F2FFF3;
     color: black;
-    /*    border: 1px solid black;*/
+    border: 2px solid #5EBB67;
     border-radius: 5px;
     text-align: center;
+    display: inline;
+    font-size: 14px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+/*    padding: 1em;*/
+}
+
+.col{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 80px;
+}
+
+.one-col p{
+    max-width: 400px;
+}
+
+
+.row h1{
+    text-align: center;
+}
+
+#p-after-title {
+    text-align: center;
+}
+
+main{
+    margin: 70px;
 }

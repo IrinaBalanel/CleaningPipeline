@@ -5,12 +5,12 @@
 }
 
 <div class="flex-container">
-    <div class="card blue-border">
-        <div class="card-title blue"><h2>Rooms</h2></div>
+    <div>
+        <div class="test"><h2 class="styled-header-room">Rooms</h2></div>
         <div class="card-items">
             @foreach (var room in Model)
             {
-                <div class="card-item">
+                <div class="card-item" >
                     <a href="Show/@room.RoomId">@room.RoomName</a>
                 </div>
             }

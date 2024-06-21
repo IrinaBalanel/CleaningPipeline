@@ -9,65 +9,72 @@
         <div><a class="btn-delete" href="/Chore/DeleteConfirm/@Model.SelectedChore.ChoreId">Delete</a></div>
         <div><a class="btn-update" href="/Chore/Edit/@Model.SelectedChore.ChoreId">Update</a></div>
     </div>
-    
+
 </div>
 
 <div class="test">
     <h2 class="styled-header-chore">Chore: @Model.SelectedChore.ChoreName</h2>
 </div>
 
-<div>
-    <h3>Description:</h3>
-    <p>@Model.SelectedChore.ChoreDescription</p>
-</div>
-<div>
-    <div>
-        <h3>Frequency:</h3>
-        <p>@Model.SelectedChore.ChoreFrequency</p>
-    </div>
-    <div>
-        <h3>Responsible owner for the task:</h3>
-        <p>@Model.SelectedChore.OwnerName</p>
-    </div>
-
-@*Assign and Unassign rooms and chores*@
-
-    <div>
-        <h3>This task must be completed in:</h3>
-        <ul>
-            @foreach (var room in Model.AssignedRooms)
-            {
-                <li>
-                    <div class="flex">
-                        <div><a href="/Room/Show/@room.RoomId">@room.RoomName</a>@*<a href="/Chore/Unassign/@Model.SelectedChore.ChoreId?RoomId=@room.RoomId">[X]</a>*@</div>
-                        <div>
-                            <form method="POST" action="/Chore/Unassign">
-                                <input type="hidden" name="ChoreId" value="@Model.SelectedChore.ChoreId" />
-                                <input type="hidden" name="RoomId" value="@room.RoomId" />
-                                <input type="submit" value="X" class="btn-unassign" />
-                            </form>
-                        </div>
-                    </div>
-                    
-                </li>
-            }
-        </ul>
-    </div>
-    <div>
-        <h3>Assign new room to @Model.SelectedChore.ChoreName</h3>
-        <form method="POST" action="/Chore/Assign">
-            <input type="hidden" name="ChoreId" value="@Model.SelectedChore.ChoreId"/>
-            <select id="room" name="RoomId">
-                @foreach (var room in Model.NotAssignedRooms)
-                {
-                    <option value="@room.RoomId">@room.RoomName</option>
-                }
-            </select>
-            <input type="submit" value="Assign room" id="btn-assign"/>
-        </form>
+<div class="col">
+    <div class="one-col">
+        <div>
+            <h3>Description:</h3>
+            <p>@Model.SelectedChore.ChoreDescription</p>
+        </div>
+        <div>
+            <h3>Frequency:</h3>
+            <p>@Model.SelectedChore.ChoreFrequency</p>
+        </div>
         
     </div>
+
+
+    <div class="two-col">
+        <div>
+            <h3>Responsible owner for the task:</h3>
+            <p>@Model.SelectedChore.OwnerName</p>
+        </div>
+        @*Assign and Unassign rooms and chores*@
+        <div>
+            <h3>This task must be completed in:</h3>
+            <ul>
+                @foreach (var room in Model.AssignedRooms)
+                {
+                    <li>
+                        <div class="flex">
+                            <div><a href="/Room/Show/@room.RoomId">@room.RoomName</a>@*<a href="/Chore/Unassign/@Model.SelectedChore.ChoreId?RoomId=@room.RoomId">[X]</a>*@</div>
+                            <div>
+                                <form method="POST" action="/Chore/Unassign">
+                                    <input type="hidden" name="ChoreId" value="@Model.SelectedChore.ChoreId" />
+                                    <input type="hidden" name="RoomId" value="@room.RoomId" />
+                                    <input type="submit" value="X" id="btn-unassign" class="input" />
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </li>
+                }
+            </ul>
+        </div>
+        <div>
+            <h3>Assign new room to @Model.SelectedChore.ChoreName</h3>
+            <form method="POST" action="/Chore/Assign">
+                <input type="hidden" name="ChoreId" value="@Model.SelectedChore.ChoreId" />
+                <select id="room" name="RoomId">
+                    @foreach (var room in Model.NotAssignedRooms)
+                    {
+                        <option value="@room.RoomId">@room.RoomName</option>
+                    }
+                </select>
+                <input type="submit" value="Assign" id="btn-assign" />
+            </form>
+
+        </div>
+    </div>
 </div>
+
 
 
 
