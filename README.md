@@ -4,7 +4,7 @@ Living in a big family requires an efficient cleaning management system. It’s 
 
 ## Entity Relationship Diagram (ERD)
 This ERD illustrates 1-to-Many and Many-to-Many relationships between entities:
-![Database Design](./erd.png)
+<img src="./erd.png" alt="database design" width="600"/>
 
 ### Many-to-Many (M→M) Relationship:
 - One chore can have many rooms where they must be completed. 
