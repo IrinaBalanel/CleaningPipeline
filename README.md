@@ -1,4 +1,4 @@
-# CleaningPipeline
+# House Cleaning Pipeline
 ## Project Idea
 Living in a big family requires an efficient cleaning management system. It’s unfair for one person to handle all the chores alone. Therefore, all household members need to participate. Assigning and tracking tasks can be challenging. The Content Management System (CMS) that I have built aims to address this issue.
 
