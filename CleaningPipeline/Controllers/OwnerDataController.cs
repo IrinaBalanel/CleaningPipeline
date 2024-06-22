@@ -91,7 +91,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Owner))]
         [HttpPost]
         [Route("api/OwnerData/AddOwner")]
-
+        [Authorize]
         public IHttpActionResult AddOwner(Owner owner)
         {
             if (!ModelState.IsValid)
@@ -119,7 +119,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Owner))]
         [HttpPost]
         [Route("api/OwnerData/DeleteOwner/{id}")]
-
+        [Authorize]
         public IHttpActionResult DeleteOwner(int id)
         {
             Owner owner = db.Owners.Find(id);
@@ -148,6 +148,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/OwnerData/UpdateOwner/{id}")]
+        [Authorize]
         public IHttpActionResult UpdateOwner(int id, Owner owner)
         {
             if (!ModelState.IsValid)

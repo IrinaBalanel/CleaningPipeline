@@ -136,6 +136,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Room))]
         [HttpPost]
         [Route("api/RoomData/AddRoom")]
+        [Authorize]
 
         public IHttpActionResult AddRoom(Room room)
         {
@@ -164,6 +165,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(Room))]
         [HttpPost]
         [Route("api/RoomData/DeleteRoom/{id}")]
+        [Authorize]
 
         public IHttpActionResult DeleteRoom(int id)
         {
@@ -193,6 +195,7 @@ namespace CleaningPipeline.Controllers
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/RoomData/UpdateRoom/{id}")]
+        [Authorize]
         public IHttpActionResult UpdateRoom(int id, Room room)
         {
             if (!ModelState.IsValid)
