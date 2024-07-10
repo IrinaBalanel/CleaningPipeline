@@ -30,3 +30,5 @@ The Cleaning Pipeline CMS uses ASP.NET, leveraging Entity Framework Code-First M
 Melissa, a mother and housewife, will act as the admin who has a registered account in the CMS. She can easily update chore details, assign each task to a room and a specific family member, and update the information about each family member. As an admin, she also has a right to create and delete from the CMS. 
 
 Melissa has a husband Jack, three children Ann, Mike and Lilly, and two parents living together in one house. Without accounts in the system, each family member will be able to see their assigned chores to ensure they contribute to the cleaning of the house.
+
+[See the website](https://drive.google.com/file/d/1EFiJxQjHCf7YBdmAe1DS-ddx0qdtt0nz/view?usp=share_link)
